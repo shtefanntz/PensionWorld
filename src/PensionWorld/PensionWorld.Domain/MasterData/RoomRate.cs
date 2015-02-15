@@ -1,8 +1,8 @@
-﻿namespace PensionWorld.Domain.Model
+﻿namespace PensionWorld.Domain.MasterData
 {
     using System;
 
-    public class RoomPrice
+    public class RoomRate
     {
         public Guid Id { get; set; }
 

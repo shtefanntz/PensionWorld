@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionWorld.NUnit.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionWorld.Domain", "PensionWorld.Domain\PensionWorld.Domain.csproj", "{F144D8B5-F55D-47F3-A39A-F5B25B606725}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionWorld.Services", "PensionWorld.Services\PensionWorld.Services.csproj", "{70078239-8E4B-454E-8EFF-AB67142684CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{F144D8B5-F55D-47F3-A39A-F5B25B606725}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F144D8B5-F55D-47F3-A39A-F5B25B606725}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F144D8B5-F55D-47F3-A39A-F5B25B606725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70078239-8E4B-454E-8EFF-AB67142684CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70078239-8E4B-454E-8EFF-AB67142684CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70078239-8E4B-454E-8EFF-AB67142684CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70078239-8E4B-454E-8EFF-AB67142684CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

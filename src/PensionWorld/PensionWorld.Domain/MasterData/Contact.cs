@@ -1,4 +1,4 @@
-﻿namespace PensionWorld.Domain.Model
+﻿namespace PensionWorld.Domain.MasterData
 {
     public class Contact
     {
