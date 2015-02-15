@@ -1,0 +1,7 @@
+1. As User I want to make a reservation
+2. As User I want to manage pensions group
+3. As User I want to manage rooms
+4. As User I want to manage users/roles - employees
+5. As User I want to manage prices
+6. As User I want to manage check-ins/checkouts
+7. As User I want to manage customers(?fidelity)
