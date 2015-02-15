@@ -5,6 +5,13 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionWorld.Web", "PensionWorld.Web\PensionWorld.Web.csproj", "{C28EF0E5-FF8B-44A9-B750-37601634DFB3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{87978255-AF85-4417-A665-BFCC110CB9A3}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionWorld.NUnit.Tests", "PensionWorld.NUnit.Tests\PensionWorld.NUnit.Tests.csproj", "{DEEB73E4-3B64-4E9C-ABED-116EA0B7291D}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PensionWorld.Domain", "PensionWorld.Domain\PensionWorld.Domain.csproj", "{F144D8B5-F55D-47F3-A39A-F5B25B606725}"
 EndProject
 Global
@@ -17,6 +24,10 @@ Global
 		{C28EF0E5-FF8B-44A9-B750-37601634DFB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C28EF0E5-FF8B-44A9-B750-37601634DFB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C28EF0E5-FF8B-44A9-B750-37601634DFB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEEB73E4-3B64-4E9C-ABED-116EA0B7291D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEEB73E4-3B64-4E9C-ABED-116EA0B7291D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEEB73E4-3B64-4E9C-ABED-116EA0B7291D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEEB73E4-3B64-4E9C-ABED-116EA0B7291D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F144D8B5-F55D-47F3-A39A-F5B25B606725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F144D8B5-F55D-47F3-A39A-F5B25B606725}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F144D8B5-F55D-47F3-A39A-F5B25B606725}.Release|Any CPU.ActiveCfg = Release|Any CPU
