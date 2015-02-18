@@ -9,6 +9,7 @@ namespace PensionWorld.Web.Controllers
 
     using NUnit.Framework;
 
+    using PensionWorld.Domain.MasterData;
     using PensionWorld.Services;
     using PensionWorld.Web.Models;
 
@@ -39,16 +40,18 @@ namespace PensionWorld.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(RoomViewModel model)
         {
             try
             {
-                // TODO: Add insert logic here
+                var room = Mapper.Map<Room>(model);
+                this.roomsService.CreateRoom(room);
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
+                this.ModelState.AddModelError("",ex.Message);
                 return View();
             }
         }

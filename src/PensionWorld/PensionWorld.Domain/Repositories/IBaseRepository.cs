@@ -7,5 +7,7 @@
         IQueryable<T> GetAll();
 
         T GetById(TId id);
+
+        void Save(T entity, TId id);
     }
 }

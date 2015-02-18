@@ -11,6 +11,10 @@ namespace PensionWorld.Web.App_Start
         {
             Mapper.CreateMap<Room, RoomViewModel>()
                 .ForMember(x => x.Type, opt => opt.MapFrom(x => x.Type.Description));
+            Mapper.CreateMap<RoomViewModel, Room>()
+                .ForMember(x => x.Type, opt => opt.MapFrom(x => new RoomType {
+                                                                    Description = x.Type
+                                                                }));
         }
     }
 }

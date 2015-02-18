@@ -10,10 +10,7 @@ namespace PensionWorld.Web.App_Start.Mocks
 
     public class RoomsRepositoryMock : IRoomsRepository
     {
-        public IQueryable<Room> GetAll()
-        {
-            return
-                new List<Room>
+        private static List<Room> _realRooms = new List<Room>
                 {
                     new Room
                     {
@@ -67,12 +64,23 @@ namespace PensionWorld.Web.App_Start.Mocks
                                    Description = "For students"
                                }
                     },
-                }.AsQueryable();
+                };
+
+
+        public IQueryable<Room> GetAll()
+        {
+            return _realRooms.AsQueryable();
         }
 
         public Room GetById(Guid id)
         {
             throw new NotImplementedException();
+        }
+
+        public void Save(Room entity, Guid id)
+        {
+            entity.Id = id;
+            _realRooms.Add(entity);
         }
     }
 }
