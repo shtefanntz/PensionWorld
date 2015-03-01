@@ -2,6 +2,8 @@
 {
     using System;
 
+    using PensionWorld.Domain.MasterData;
+
     public class ReservationDto
     {
         public Guid CustomerId { get; set; }
@@ -14,9 +16,9 @@
 
         public Guid PensionId { get; set; }
 
-        public Guid RoomId { get; set; }
+        public RoomType RoomType { get; set; }
 
-        public decimal Amount { get; set; }
+        public decimal AmountPaid { get; set; }
 
         public ReservationStatus Status { get; set; }
 

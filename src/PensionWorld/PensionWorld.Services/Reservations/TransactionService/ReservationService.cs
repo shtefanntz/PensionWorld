@@ -1,5 +1,6 @@
 ﻿namespace PensionWorld.Services.Reservations.TransactionService
 {
+    using System;
     using System.Linq;
     using System.Transactions;
 
@@ -20,14 +21,18 @@
 
         private readonly IReservationRepository repository;
 
+        private readonly IRoomRateCalculator roomRateCalculator;
+
         public ReservationService(
             IReservationRepository repository,
             ICustomerRepository customerRepository,
-            IMailSender mailSender)
+            IMailSender mailSender,
+            IRoomRateCalculator roomRateCalculator)
         {
             this.repository = repository;
             this.customerRepository = customerRepository;
             this.mailSender = mailSender;
+            this.roomRateCalculator = roomRateCalculator;
         }
 
         public ReservationResult CreateReservation(ReservationDto dto)
@@ -36,10 +41,27 @@
             {
                 var reservation = this.MapFromDTO(dto);
 
+                reservation.BookingAmount = this.CalculateTotalAmount(
+                    dto.RoomType,
+                    dto.BeginDate,
+                    dto.Days);
+
                 var validateReservation = this.ValidateReservation(reservation);
                 if (!validateReservation.IsValid)
                 {
                     return new ReservationResult { ErrorMessage = validateReservation.Reason };
+                }
+
+                if (reservation.AmountPaid == 0)
+                {
+                    reservation.Status = ReservationStatus.Tentative;
+                } 
+                else
+                {
+                    if (reservation.AmountPaid >= reservation.BookingAmount)
+                    {
+                        reservation.Status = ReservationStatus.Payed;
+                    }
                 }
 
                 this.repository.Add(reservation);
@@ -51,7 +73,12 @@
                 return new ReservationResult();
             }
         }
-        
+
+        private decimal CalculateTotalAmount(RoomType roomType, DateTime startDate, int numberOfDays)
+        {
+            return this.roomRateCalculator.ComputePriceFor(roomType, startDate, numberOfDays);
+        }
+
         public ReservationResult UpdateReservation(ReservationDto dto)
         {
             using (var transactionScope = new TransactionScope())
@@ -101,7 +128,7 @@
         {
             var endDate = reservation.BeginDate.AddDays(reservation.Days);
             var allReservationBetween = this.repository.GetAllReservationBetween(
-                reservation.RoomId,
+                reservation.RoomType,
                 reservation.BeginDate,
                 endDate);
 
@@ -123,8 +150,8 @@
                            BeginDate = dto.BeginDate,
                            Days = dto.Days,
                            PensionId = dto.PensionId,
-                           RoomId = dto.RoomId,
-                           Amount = dto.Amount,
+                           RoomType = dto.RoomType,
+                           AmountPaid = dto.AmountPaid,
                            ReferenceNumber = dto.ReferenceNumber,
                            Status = (ReservationStatus)dto.Status
                        };
